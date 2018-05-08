@@ -15,6 +15,7 @@ public:
     void addNodeToHead(int);
     void addNodeToTail(int);
     void displayNodes();
+    bool contains(int);
 };
 
 linkedList::linkedList(){
@@ -48,7 +49,6 @@ void linkedList :: addNodeToTail (int v){
         tail->nextNode = q;
         tail = q;
     }
-
 }
 
 void linkedList :: displayNodes(){
@@ -57,7 +57,18 @@ void linkedList :: displayNodes(){
         cout<<it->value<<" ";
         it=it->nextNode;
     }
+}
 
+bool linkedList :: contains(int v){
+    node *it = head;
+
+    while(it!=NULL){
+        if(it->value==v){
+            return true;
+        }
+        it = it->nextNode;
+    }
+    return false;
 }
 
 int main()
