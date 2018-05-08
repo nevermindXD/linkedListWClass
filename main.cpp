@@ -14,6 +14,7 @@ public:
     linkedList();
     void addNodeToHead(int);
     void addNodeToTail(int);
+    void displayNodes();
 };
 
 linkedList::linkedList(){
@@ -39,19 +40,34 @@ void linkedList :: addNodeToTail (int v){
     node *q = new node;
     q->value = v;
 
+
     if(tail == NULL){
         head = q;
         tail = q;
     }else{
-        q->nextNode = tail;
+        tail->nextNode = q;
         tail = q;
     }
 
 }
 
+void linkedList :: displayNodes(){
+    node *it = head;
+    while(it!=NULL){
+        cout<<it->value<<" ";
+        it=it->nextNode;
+    }
+
+}
 
 int main()
 {
+    linkedList *l = new linkedList();
+    l->addNodeToHead(6);
+    l->addNodeToTail(9);
+    l->displayNodes();
+
+    cout<<endl;
     cout << "Hello world!" << endl;
     return 0;
 }
